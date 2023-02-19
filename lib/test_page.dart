@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_auth/base_page.dart';
+import 'package:flutter_firebase_auth/frame.dart';
+import 'package:flutter_firebase_auth_test_app/details_page.dart';
 import 'home_page.dart';
 import 'home_screen.dart';
 
@@ -28,7 +30,11 @@ class TestPage extends BasePage {
             child: ListTile(
               title: Text('$materialIndex', style: TextStyle(fontSize: 24.0)),
               trailing: Icon(Icons.chevron_right),
-              onTap: () => push(context, '/details'),
+              onTap: () => pushRoute(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => DetailsPage(navigatorKeys[2])),
+              ),
             ),
           );
         });

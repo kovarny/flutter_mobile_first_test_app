@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_auth/frame.dart';
+import 'package:flutter_firebase_auth_test_app/blank_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'home_page.dart';
 import 'navigator.dart';
@@ -76,7 +77,17 @@ class AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Frame(count: 3),
+      body: Frame(
+        count: 3,
+        homePage: MaterialPageRoute(
+            builder: (context) => HomePage(navigatorKeys[0]),
+            settings: RouteSettings(name: '/')),
+        blankPage: MaterialPageRoute(
+            builder: (context) => BlankPage(),
+            fullscreenDialog: true,
+            settings: RouteSettings(name: '/blank')),
+      ),
+
       // bottomNavigationBar: BottomNavigation(
       //   currentTab: _currentTab,
       //   onSelectTab: _selectTab,

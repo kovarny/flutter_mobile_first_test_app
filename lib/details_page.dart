@@ -17,7 +17,10 @@ class DetailsPage extends BasePage {
       body: ElevatedButton(
         child: Text('Go to Next page'),
         onPressed: () {
-          push(context, '/details');
+          MaterialPageRoute(
+              builder: (context) => DetailsPage(navigatorKey),
+              settings: RouteSettings(name: '/details'));
+          //push(context, '/details');
           // this
           //     .navigatorKey
           //     .currentState!

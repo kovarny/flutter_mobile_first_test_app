@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_auth/base_page.dart';
+import 'package:flutter_firebase_auth/frame.dart';
 import 'package:flutter_firebase_auth_test_app/test_page.dart';
 
 import 'home_screen.dart';
@@ -15,6 +16,10 @@ class HomePage extends BasePage {
         ),
         body: ElevatedButton(
             child: Text('go to test'),
-            onPressed: () => push(context, '/test')));
+            onPressed: () => pushRoute(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => TestPage(navigatorKeys[1])),
+                )));
   }
 }

@@ -63,11 +63,3 @@ MaterialPageRoute pageRouteBuilders(BuildContext context,
       throw 'no page found for routeName: $routeName';
   }
 }
-
-GlobalKey<NavigatorState> getNextNavigatorKey(
-    List<GlobalKey<NavigatorState>> keys,
-    GlobalKey<NavigatorState> currentKey) {
-  final currentIndex = keys.indexOf(currentKey);
-  final nextIndex = currentIndex + 1;
-  return (nextIndex < keys.length) ? keys[nextIndex] : keys.last;
-}
