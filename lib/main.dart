@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_auth/frame.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'frame.dart';
 import 'home_page.dart';
 import 'navigator.dart';
 

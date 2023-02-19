@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase_auth_test_app/base_page.dart';
-
-import 'frame.dart';
+import 'package:flutter_firebase_auth/base_page.dart';
 import 'home_page.dart';
 import 'home_screen.dart';
 
