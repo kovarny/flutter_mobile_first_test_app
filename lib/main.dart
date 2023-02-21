@@ -104,37 +104,40 @@ class AppState extends State<App> {
               child: Center(
                   child: SizedBox(
                       width: 800,
-                      child: Frame(
-                        onGenerateRoute: (RouteSettings r) {
-                          print('onGenerateRoute: ${r}');
-                          if (r.name == '/') {
-                            return PageRouteBuilder(
-                                pageBuilder: (context, a, b) => HomePage1(),
-                                settings: r);
-                          } else if (r.name == '/blank') {
-                            return PageRouteBuilder(
-                                pageBuilder: (context, a, b) => BlankPage(),
-                                settings: r);
-                          } else if (r.name == '/details') {
-                            return PageRouteBuilder(
-                                pageBuilder: (context, a, b) => DetailsPage1(),
-                                settings: r);
-                          }
-                          // // return homePage;
-                          // return PageRouteBuilder(
-                          //     pageBuilder: (context, a, b) => HomePage1(), settings: r);
-                        },
-                        // count: 3,
-                        // homePage: PageRouteBuilder(
-                        //     pageBuilder: (context, a, b) =>
-                        //         HomePage(navigatorKeys[1]),
-                        //     settings: RouteSettings(name: '/'),
-                        //     fullscreenDialog: true),
-                        // blankPage: PageRouteBuilder(
-                        //     pageBuilder: (context, a, b) => BlankPage(),
-                        //     fullscreenDialog: true,
-                        //     settings: RouteSettings(name: '/blank')),
-                      ))))
+                      child: MyWidget(
+                          data: 'text',
+                          child: Frame(
+                            onGenerateRoute: (RouteSettings r) {
+                              print('onGenerateRoute: ${r}');
+                              if (r.name == '/') {
+                                return PageRouteBuilder(
+                                    pageBuilder: (context, a, b) => HomePage1(),
+                                    settings: r);
+                              } else if (r.name == '/blank') {
+                                return PageRouteBuilder(
+                                    pageBuilder: (context, a, b) => BlankPage(),
+                                    settings: r);
+                              } else if (r.name == '/details') {
+                                return PageRouteBuilder(
+                                    pageBuilder: (context, a, b) =>
+                                        DetailsPage1(),
+                                    settings: r);
+                              }
+                              // // return homePage;
+                              // return PageRouteBuilder(
+                              //     pageBuilder: (context, a, b) => HomePage1(), settings: r);
+                            },
+                            // count: 3,
+                            // homePage: PageRouteBuilder(
+                            //     pageBuilder: (context, a, b) =>
+                            //         HomePage(navigatorKeys[1]),
+                            //     settings: RouteSettings(name: '/'),
+                            //     fullscreenDialog: true),
+                            // blankPage: PageRouteBuilder(
+                            //     pageBuilder: (context, a, b) => BlankPage(),
+                            //     fullscreenDialog: true,
+                            //     settings: RouteSettings(name: '/blank')),
+                          )))))
         ],
       ),
 

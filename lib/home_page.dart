@@ -19,22 +19,21 @@ class HomePage1 extends ConsumerWidget {
         body: ElevatedButton(
             child: Text('go to test'),
             onPressed: () => {
-                  Frame.pushPage(
-                      context,
-                      1,
-                      MediaQuery.of(context).size.width > 600
-                          ? PageRouteBuilder(
-                              settings: RouteSettings(
-                                name: '/details',
-                                arguments: {'pop': true, 'id': 123},
-                              ),
-                              pageBuilder: (context, a, b) => TestPage1(),
-                              //fullscreenDialog: true,
-                            )
-                          : MaterialPageRoute(
-                              builder: (context) => TestPage1(),
-                              settings: RouteSettings(name: '/details'),
-                            ))
+                  Frame.pushPage1(context, 1, '/details', TestPage1()
+                      // MediaQuery.of(context).size.width > 600
+                      //     ? PageRouteBuilder(
+                      //         settings: RouteSettings(
+                      //           name: '/details',
+                      //           arguments: {'pop': true, 'id': 123},
+                      //         ),
+                      //         pageBuilder: (context, a, b) => TestPage1(),
+                      //         //fullscreenDialog: true,
+                      //       )
+                      //     : MaterialPageRoute(
+                      //         builder: (context) => TestPage1(),
+                      //         settings: RouteSettings(name: '/details'),
+                      //       )
+                      )
                 }));
   }
 }

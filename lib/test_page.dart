@@ -31,18 +31,17 @@ class TestPage1 extends ConsumerWidget {
               title: Text('$materialIndex', style: TextStyle(fontSize: 24.0)),
               trailing: Icon(Icons.chevron_right),
               onTap: () {
-                Frame.pushPage(
-                    context,
-                    2,
+                Frame.pushPage1(context, 2, '/details', DetailsPage1()
                     //MaterialPageRoute(builder: builder)
-                    PageRouteBuilder(
-                      settings: RouteSettings(
-                        name: '/details',
-                        arguments: {'pop': true, 'id': materialIndex},
-                      ),
-                      pageBuilder: (context, a, b) => DetailsPage1(),
-                      //fullscreenDialog: true,
-                    ));
+                    // PageRouteBuilder(
+                    //   settings: RouteSettings(
+                    //     name: '/details',
+                    //     arguments: {'pop': true, 'id': materialIndex},
+                    //   ),
+                    //   pageBuilder: (context, a, b) => DetailsPage1(),
+                    //   //fullscreenDialog: true,
+                    // )
+                    );
 
                 // pushRoute(
                 //   context,
