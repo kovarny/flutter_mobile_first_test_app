@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_auth/blank_page.dart';
 import 'package:flutter_firebase_auth/frame.dart';
-import 'package:flutter_firebase_auth_test_app/blank_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'details_page.dart';
 import 'home_page.dart';
 import 'navigator.dart';
 
@@ -19,6 +20,11 @@ class MainApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp(
+        routes: <String, WidgetBuilder>{
+          // define the routes
+          '/test': (BuildContext context) => HomePage1(),
+          '/blank': (BuildContext context) => BlankPage(),
+        },
         themeMode: ThemeMode.dark,
         darkTheme: ThemeData(
             scaffoldBackgroundColor: Colors.black,
@@ -77,15 +83,59 @@ class AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Frame(
-        count: 3,
-        homePage: MaterialPageRoute(
-            builder: (context) => HomePage(navigatorKeys[0]),
-            settings: RouteSettings(name: '/')),
-        blankPage: MaterialPageRoute(
-            builder: (context) => BlankPage(),
-            fullscreenDialog: true,
-            settings: RouteSettings(name: '/blank')),
+      appBar: AppBar(
+        actions: [
+          // CurrentUserAvatar(),
+          IconButton(
+              icon: Icon(Icons.exit_to_app),
+              onPressed: () {} //=> FirebaseAuth.instance.signOut(),
+              )
+        ],
+      ),
+      body: Stack(
+        children: [
+          Opacity(
+              opacity: 0.5, // set the opacity value between 0.0 and 1.0
+              child: Image(
+                  image: NetworkImage(
+                      'https://images.unsplash.com/photo-1502101872923-d48509bff386?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80'))),
+          Opacity(
+              opacity: 0.8, // set the opacity value between 0.0 and 1.0
+              child: Center(
+                  child: SizedBox(
+                      width: 800,
+                      child: Frame(
+                        onGenerateRoute: (RouteSettings r) {
+                          print('onGenerateRoute: ${r}');
+                          if (r.name == '/') {
+                            return PageRouteBuilder(
+                                pageBuilder: (context, a, b) => HomePage1(),
+                                settings: r);
+                          } else if (r.name == '/blank') {
+                            return PageRouteBuilder(
+                                pageBuilder: (context, a, b) => BlankPage(),
+                                settings: r);
+                          } else if (r.name == '/details') {
+                            return PageRouteBuilder(
+                                pageBuilder: (context, a, b) => DetailsPage1(),
+                                settings: r);
+                          }
+                          // // return homePage;
+                          // return PageRouteBuilder(
+                          //     pageBuilder: (context, a, b) => HomePage1(), settings: r);
+                        },
+                        // count: 3,
+                        // homePage: PageRouteBuilder(
+                        //     pageBuilder: (context, a, b) =>
+                        //         HomePage(navigatorKeys[1]),
+                        //     settings: RouteSettings(name: '/'),
+                        //     fullscreenDialog: true),
+                        // blankPage: PageRouteBuilder(
+                        //     pageBuilder: (context, a, b) => BlankPage(),
+                        //     fullscreenDialog: true,
+                        //     settings: RouteSettings(name: '/blank')),
+                      ))))
+        ],
       ),
 
       // bottomNavigationBar: BottomNavigation(

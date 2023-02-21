@@ -1,25 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_auth/base_page.dart';
 import 'package:flutter_firebase_auth/frame.dart';
+import 'package:flutter_firebase_auth/navigator.dart';
 import 'package:flutter_firebase_auth_test_app/test_page.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'home_screen.dart';
+import 'details_page.dart';
 
-class HomePage extends BasePage {
-  HomePage(navigatorKey, {Key? key}) : super(navigatorKey, key: key);
+class HomePage1 extends ConsumerWidget {
+  HomePage1({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
         appBar: AppBar(
           title: Text('Home Page'),
         ),
         body: ElevatedButton(
             child: Text('go to test'),
-            onPressed: () => pushRoute(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => TestPage(navigatorKeys[1])),
-                )));
+            onPressed: () => {
+                  Frame.pushPage(
+                      context,
+                      1,
+                      MediaQuery.of(context).size.width > 600
+                          ? PageRouteBuilder(
+                              settings: RouteSettings(
+                                name: '/details',
+                                arguments: {'pop': true, 'id': 123},
+                              ),
+                              pageBuilder: (context, a, b) => TestPage1(),
+                              //fullscreenDialog: true,
+                            )
+                          : MaterialPageRoute(
+                              builder: (context) => TestPage1(),
+                              settings: RouteSettings(name: '/details'),
+                            ))
+                }));
   }
 }
